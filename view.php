@@ -1,5 +1,6 @@
+<?php require_once('authentication.php'); ?>
 <?php require_once('header.php'); ?>
-
+<?php require_once('navigation.php'); ?>
 <section>
   <article>
   <h1>Here You Can Check Out What We Have Stored!</h1>

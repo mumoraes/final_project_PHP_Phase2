@@ -1,4 +1,5 @@
 <?php require_once('header.php'); ?>
+<?php require_once('navigation.php'); ?>
 <section>
   <article>
     <h1> Connect with another coders worldwide and share your skills to create an amazing network!</h1>
