@@ -18,7 +18,7 @@
                     <a class="nav-link" href="view.php">View</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="del-page.php">Edit</a>
+                    <a class="nav-link" href="del-page.php">Update</a>
                 </li>
             </ul>
         </div>
