@@ -50,27 +50,6 @@
     }
     ?>
     <main>    
-      <?php
-       require_once('connect.php');
-       $sql = "SELECT * FROM users WHERE id = '$iduser' ;";
-       $statement = $db->prepare($sql);
-       $statement->execute();
-
-      //*******Session checking********
-      if($statement->rowCount() != 0)
-      {
-        echo "<h1>". "<p class='cover-heading'> Hello, ".$_SESSION['username']."! You already shared!"."</h1>";
-        ?>
-        <button  class="btn btn-outline-primary" onclick="location.href='del-page.php'">Go To Update Info</button>
-        <?php
-        goto end;
-      }
-      else
-      {
-        echo "<h1>". "<p class='cover-heading'> Welcome, ".$_SESSION['username']."! Ready to share?"."</h1>";
-      }
-      //*******Session checking end******** 
-      ?>
       <form action="process.php" method="post" enctype="multipart/form-data" class="form">
         <input type="hidden" name="user_id" value="<?php echo $id;?>">
         <label for="fname"> Your First Name  </label>

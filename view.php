@@ -6,13 +6,7 @@
   <!-- <h1>Here You Can Check Out What We Have Stored!</h1> -->
     <main>
 
-    <h3> Search Skills</h3>
-    <form action="search.php" method="get">
-      <label for="usersearch">Find skills you are looking for:</label>
-      <input type="text" name="usersearch">
-      <input  class="btn btn-outline-primary" type="submit" name="submit" value="Find it!">
-    </form>
-    <hr>
+   
 
       <?php
         try {
@@ -33,7 +27,18 @@
               echo "<h1>Here You Can Check Out What We Have Stored!</h1>";
           }
           //*******Session checking end********
-
+          ?>
+          <h3> Search Skills</h3>
+          <form action="search.php" method="get">
+            <label for="usersearch">Find skills you are looking for:</label>
+            <input type="text" name="usersearch">
+            <input  class="btn btn-outline-primary" type="submit" name="submit" value="Find it!">
+          </form>
+          <p>
+              <a href="del-page.php" class="btn btn-outline-primary">Update / Delete</a>
+          </p>
+          <hr>
+          <?php
           echo "<table class='table table-striped'><thead class='thead-dark'> 
           <th></th>
             <th>First Name</th>
@@ -45,13 +50,14 @@
           </thead><tbody>";
 
           foreach ($records as $record) {
-              echo "<tr><td><img src='images/". $record['profile_image']. "' alt='" . $record['profile_image'] . "'></td><td>".
-              $record['first_name'] . "</td><td>" . 
-              $record['last_name'] . "</td><td>" .
-              $record['email'] . "</td><td>" .
-              $record['current_city'] . "</td><td>" .
-              $record['skills'] . "</td><td><a href='" .
-              $record['social_media']. "' target='_blank'> Personal Media </a></td><tr>";
+              echo "<tr>
+              <td><img src='images/". $record['profile_image']. "' alt='" . $record['profile_image'] . "'></td>
+              <td>".  $record['first_name'] . "</td>
+              <td>" . $record['last_name'] . "</td>
+              <td>" . $record['email'] . "</td>
+              <td>" . $record['current_city'] . "</td>
+              <td>" . $record['skills'] . "</td>
+              <td><a href='" . $record['social_media']. "' target='_blank'> Personal Media </a></td><tr>";
               
           }
           echo "</tbody></table>"; 
@@ -60,13 +66,10 @@
           }
           catch(PDOException $e) {
               $error_message = $e->getMessage(); 
-              echo "<p> $error message </p>"; 
+              echo "<p> $error_message </p>"; 
           }
       ?>
 
-      <p>
-        <a href="del-page.php" class="btn btn-outline-primary">Update / Delete</a>
-      </p>
 
     </main>
   </article>

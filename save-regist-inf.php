@@ -55,7 +55,7 @@
         }
       }catch(PDOException $e) {
         $error_message = $e->getMessage(); 
-        echo "<p> $error message </p>";
+        echo "<p> $error_message </p>";
     
       }
     
@@ -79,7 +79,7 @@
     
         }catch(PDOException $e) {
           $error_message = $e->getMessage(); 
-          echo "<p> $error message </p>"; 
+          echo "<p> $error_message </p>"; 
         }
       }
     

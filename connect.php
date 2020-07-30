@@ -1,6 +1,6 @@
 <?php
 
-    //ONLINE
+    //ONLINE AWS Georgian College
     /*
     $dsn = 'mysql:host=172.31.22.43; dbname=Murilo200449241';
     $username = 'Murilo200449241';
@@ -22,8 +22,16 @@
     */
 
     //OFFLINE (WAMP)
-
+/*
     $dsn = 'mysql:host=localhost;dbname=final_project_php'; 
+    $username = 'root';
+    $password = ''; 
+    $db = new PDO($dsn, $username, $password);
+    //set error mode to exception 
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+*/
+    //DB TEST ONLY
+    $dsn = 'mysql:host=localhost;dbname=lab4_db'; 
     $username = 'root';
     $password = ''; 
     $db = new PDO($dsn, $username, $password);
