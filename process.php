@@ -9,6 +9,8 @@
 	$email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 	$current_city = filter_input(INPUT_POST, 'current_city');
 	$skills = filter_input(INPUT_POST, 'skills');
+	$credentialid = $_SESSION['id'];
+
 	// link and photo
 	$link = filter_input(INPUT_POST, 'link');
 	/* image */
@@ -19,11 +21,12 @@
 	$id = null;
 	$id = filter_input(INPUT_POST, 'user_id');
 
+	
 	$ok = true;
 
 	//define image constants
 	define('UPLOADPATH', 'images/');
-	define('MAXFILESIZE', 32786); //32 KB
+	define('MAXFILESIZE', 64786); //64 KB
 
 	// some input validation
 	if (empty($first_name) || empty($last_name)) {
@@ -53,11 +56,11 @@
 	}
 
 	// check photo is the right size and type 
-	if ((($photo_type !== 'image/gif') || ($photo_type !== 'image/jpeg') || ($photo_type !== 'image/jpg') || ($photo_type !== 'image/png')) && ($photo_size < 0) && ($photo_size >= MAXFILESIZE)) {
+	if ((($photo_size >= MAXFILESIZE) && ($photo_type !== 'image/jpeg') || ($photo_type !== 'image/png') || ($photo_type !== 'image/gif') || ($photo_type !== 'image/jpg')) && ($photo_size < 0)) {
 		//making sure upload with NO errors 
 		if ($_FILES['photo']['error'] !== 0) {
 				$ok = false;
-				echo "Please submit a photo that is a jpg, png or gif and less than 32kb";
+				echo "Please submit a photo with the size less than 64kb and correct format";
 		}
 	}
 
@@ -74,7 +77,7 @@
 				$sql = "UPDATE users SET first_name = :firstname, last_name = :lastname, email = :email, current_city = :current_city, skills = :skills, social_media = :link, profile_image = :photo WHERE user_id = :user_id;";
 			} else {
 
-				$sql = "INSERT INTO users (first_name, last_name, email, current_city, skills, social_media, profile_image) VALUES (:firstname, :lastname, :email, :current_city, :skills, :link, :photo);";
+				$sql = "INSERT INTO users (first_name, last_name, email, current_city, skills, social_media, profile_image, id) VALUES (:firstname, :lastname, :email, :current_city, :skills, :link, :photo, $credentialid);";
 			}
 
 			$statement = $db->prepare($sql);

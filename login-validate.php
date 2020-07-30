@@ -51,7 +51,6 @@ try
                 }
             }
         }
-        // include exception handling
         else 
         {
             echo "<p>Problem with Validation.</p>"; 
@@ -59,7 +58,7 @@ try
     }
 }catch(PDOException $e) {
     $error_message = $e->getMessage(); 
-    echo "<p> $error message </p>"; 
+    echo "<p> $error_message </p>"; 
 }
 
 $statement->closeCursor(); 
